@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+       *{
+        margin:0;
+        padding:0;
+        font-family: 'Inter', sans-serif;
+       }
+       body{
+        background-color: antiquewhite; 
+        display: flex;
+        flex-direction: column;
+        width:100vw;
+        min-height:fit-content;
+    
+       }
+       body::-webkit-scrollbar{
+        display: none;
+       }
+       /* .whole-wrapper{
+        background-color: yellow;
+             width:96vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+       } */
+       .section1{
+        width:100%;
+        background-color:black;
+
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+        padding:2rem;
+       }
+       .section1 p{
+        display: flex;
+        align-items: center;
+        font-size: 34px;
+        color: rgb(184, 188, 204,.5)
+       }
+       .section1 p span{
+        font-size: 24px;
+        white-space: nowrap;
+        color: #B8BCCC;
+       }
+       .detailsTop{
+        width:100%;
+        /* background-color: white; */
+        display: flex;
+        gap:14rem;
+       }
+       .smallBox{
+        display: flex;
+        flex-direction: column;
+        gap:.5rem;
+       }
+       /* //////////////////////// */
+       .section2{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:2rem;
+        background-color: #575A85;
+       }
+       .section2 p{
+        color:#B8BCCC;
+        font-size:48px;
+        padding:1rem;
+        
+       }
+       #map{
+        width:60%;
+        height:500px;
+        border:1px solid black;
+        margin-bottom: 4rem;
+       }
+       /* //////////////////////////////
+        */
+        .section3{
+            width:100%;
+            display: flex;
+            background-color: black;
+            flex-direction: column;
+            gap:2rem;
+            padding:2rem;
+        }
+        .section3>p{
+            text-align: center;
+            font-size: 48px;
+            color: #B8BCCC;
+        }
+        .info-box{
+            display: flex;
+            flex-direction: column;
+            gap:.5rem;
+            color:#B8BCCC80;
+        }
+        .info-box p{
+            font-size: 34px;
+            color: rgb(184, 188, 204,.5)
+        }
+        .info-box p>span{
+            color: rgb(184, 188, 204,1)
+        }
+        .section4{
+            width:100%;
+            display: flex;
+            background-color: black;
+            flex-direction: column;
+            gap:2rem;
+            padding:2rem;
+        }
+        .section4>p{
+            text-align: center;
+            font-size: 48px;
+            color: #B8BCCC;
+        }
+        .section4 input{
+          background-image: url("search.png");
+          background-repeat: no-repeat;
+          background-position:.8rem .8rem ;
+        
+
+            width:90%;
+            font-size: 34px;
+            padding:.5rem 3rem;
+            border-radius: .5rem;
+            position:relative;
+        }
+      .container{
+        padding:2rem;
+        padding-right:15rem;
+        width:100%;
+        background-color:black;
+
+        display: flex;
+        align-items: center;
+        align-items: center;
+        gap:5rem;
+        flex-wrap: wrap;
+      }
+      .container p{
+        font-weight: bold;
+        font-size:34px;
+        color: rgb(184, 188, 204,.9);
+      }
+      .container p span{
+        font-weight: normal;
+        font-size: 26px;
+        color:rgb(184, 188, 204,1)
+      }
+      .Box{
+        background-color: #575A85;
+        display: flex;
+        flex-direction: column;
+        gap:.5rem;
+        width:fit-content;
+        padding:1rem;
+        border-radius: .5rem;
+      }
+
+      .hide{
+        display: none;
+      }
+      
+       
+    </style>
+</head>
+<body>
+  <section class="whole-wrapper">
+
+
+   <section class="section1">
+      <p>IP Address:&nbsp;&nbsp;&nbsp;<span id="ip">255.255.255.255</span></p>
+      <div class="detailsTop">
+        <div class="smallBox">
+            <p>Lat:&nbsp;&nbsp;&nbsp;  <span id="lat"></span></p>
+            <p>Long:&nbsp;&nbsp;&nbsp;  <span id="long"></span></p>
+        </div>
+        <div class="smallBox">
+            <p>City:&nbsp;&nbsp;&nbsp;  <span id="city"></span></p>
+            <p>Region:&nbsp;&nbsp;&nbsp;  <span id="region"></span></p>
+        </div>
+        <div class="smallBox">
+            <p>Organisation:&nbsp;&nbsp;&nbsp;  <span id="org"></span></p>
+            <p>Hostname:&nbsp;&nbsp;&nbsp;  <span id="host"></span></p>
+        </div>
+      </div>
+     
+   </section>
+
+   <section class="section2">
+    <p>Your Current Location</p>
+    <div id="map"></div>
+   </section>
+
+   <section class="section3">
+    <p>More information About You</p>
+    <div class="info-box">
+        <p>Time Zone:&nbsp;&nbsp;&nbsp;<span id="timezone">dfda</span></p>
+        <p>Date And Time:&nbsp;&nbsp;&nbsp;<span id="datetime"></span></p>
+        <p>Pincode:&nbsp;&nbsp;&nbsp;<span id="pincode"></span></p>
+        <p>Message:&nbsp;&nbsp;&nbsp;<span id="msg"></span></p>
+    </div>
+   </section>
+
+
+   <section class="section4">
+    <p>Post Offices Near You</p>
+    <input type="text" placeholder="Search By Name">
+   </section>
+
+   <div class="container">
+
+   </div> 
+
+</section>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgUKcUvw0ItdCMius-qjxOqC4ZblkUOzk&callback=initMap">
+</script>
+
+<script src="indexX.js
+"></script>
+
+
+
+</body>
+</html>
